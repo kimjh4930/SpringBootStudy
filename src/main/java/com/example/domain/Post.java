@@ -1,57 +1,45 @@
 package com.example.domain;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import lombok.Data;
+
+@Data
 @Entity
 public class Post {
 
 	@Id
 	@GeneratedValue
-	int id;
-	String subject;
-
-	@Column(length = 100000000)
-	String content;
+	private int id;
 	
-	Date regDate;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getSubject() {
-		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public Date getRegDate() {
-		return regDate;
-	}
-
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
-	}
+	@NotBlank(message = "제목을 입력해주세요.")
+	@Size(max = 255)
+	@Column(nullable = false)
+	private String title;
 	
+	@Size(max = 255)
+	private String subTitle;
+	
+	@NotBlank(message = "내용을 입력해주세요.")
+	@Size(max = 100000000)
+	@Column(nullable = false)
+	private String content;
+	
+	@DateTimeFormat(iso = ISO.DATE_TIME)
+	private LocalDateTime regDate;
+	@DateTimeFormat(iso = ISO.DATE_TIME)
+	private LocalDateTime modifyDate;
 	
 
 }

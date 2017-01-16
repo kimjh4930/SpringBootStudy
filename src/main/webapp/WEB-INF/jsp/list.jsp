@@ -9,8 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Hello Spring Blog</title>
-<link rel="stylesheet"
-	href="/webjars/bootstrap/3.3.7/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/webjars/bootstrap/3.3.7/dist/css/bootstrap.min.css">
 <script src="/webjars/jQuery/3.1.1/dist/jquery.min.js"></script>
 <script src="/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
 </head>
@@ -70,7 +69,7 @@
 				<c:forEach var="post" items="${postList}">
 					<div class="post-preview">
 						<a href="/post/${post.id}">
-							<h2 class="post-title">${post.subject}</h2>
+							<h2 class="post-title">${post.title}</h2>
 						</a>
 						<p class="post-meta">
 							Posted by <a href="#">Origoni</a> on ${post.regDate}
